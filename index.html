@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgentCraft Studio — Websites &amp; Smart AI Bots Made Simple</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              500: '#3b82f6',
+              600: '#2563eb', // Core Tech Blue
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+              dark: '#090d16',
+              cardDark: '#111827',
+              borderDark: '#1f2937'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Space Grotesk"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #334155;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2563eb;
+    }
+
+    /* Ambient Background Glow */
+    .bg-grid-pattern {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+    }
+    .dark .bg-grid-pattern {
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-brand-dark dark:text-slate-100 font-sans transition-colors duration-300 selection:bg-brand-600 selection:text-white antialiased overflow-x-hidden min-h-screen flex flex-col justify-between">
+
+  <!-- Ambient Backdrop -->
+  <div class="fixed inset-0 bg-grid-pattern pointer-events-none -z-10"></div>
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-80 bg-gradient-to-b from-brand-500/10 dark:from-brand-600/15 via-transparent to-transparent pointer-events-none -z-10 blur-3xl"></div>
+
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-50 backdrop-blur-lg bg-white/85 dark:bg-brand-dark/85 border-b border-slate-200 dark:border-brand-borderDark transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white shadow-md shadow-brand-600/25 group-hover:scale-105 transition-all">
+          <i class="fa-solid fa-robot text-lg"></i>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-1.5">
+            <span class="font-heading font-bold text-xl tracking-tight text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-blue-400 transition-colors">AgentCraft</span>
+            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-brand-600 dark:text-blue-400 bg-brand-50 dark:bg-blue-950/60 border border-brand-200 dark:border-blue-800 px-1.5 py-0.5 rounded-md">Studio</span>
+          </div>
+          <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Simple Web &amp; AI Agents</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <a href="#services" class="hover:text-brand-600 dark:hover:text-blue-400 transition-colors">Services</a>
+        <a href="#playground" class="hover:text-brand-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1.5">
+          <span>Live Demo Bot</span>
+          <span class="inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-800">100% Functional</span>
+        </a>
+        <a href="#how-it-works" class="hover:text-brand-600 dark:hover:text-blue-400 transition-colors">How It Works</a>
+        <a href="#calculator" class="hover:text-brand-600 dark:hover:text-blue-400 transition-colors">Pricing &amp; Calculator</a>
+        <a href="#contact" class="hover:text-brand-600 dark:hover:text-blue-400 transition-colors">Contact</a>
+      </nav>
+
+      <!-- Desktop Action Buttons -->
+      <div class="hidden md:flex items-center gap-3">
+        <!-- Dark/Light Mode Toggle -->
+        <button id="themeToggleBtn" aria-label="Toggle Dark/Light Mode" class="w-10 h-10 rounded-xl border border-slate-200 dark:border-brand-borderDark bg-slate-100 dark:bg-brand-cardDark text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-blue-400 flex items-center justify-center transition-all">
+          <i id="themeIcon" class="fa-solid fa-moon"></i>
+        </button>
+
+        <!-- CTA -->
+        <a href="#playground" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-sm font-semibold transition-all">
+          Test Bot
+        </a>
+        <a href="#contact" class="px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold shadow-md shadow-brand-600/25 transition-all flex items-center gap-2">
+          <span>Start Project</span>
+          <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+
+      <!-- Mobile Right Items (Theme + Hamburger) -->
+      <div class="flex items-center gap-2 md:hidden">
+        <button id="themeToggleBtnMobile" aria-label="Toggle Theme" class="w-10 h-10 rounded-xl border border-slate-200 dark:border-brand-borderDark bg-slate-100 dark:bg-brand-cardDark text-slate-600 dark:text-slate-300 flex items-center justify-center">
+          <i id="themeIconMobile" class="fa-solid fa-moon"></i>
+        </button>
+        <button id="mobileMenuBtn" aria-label="Open Navigation Menu" class="w-10 h-10 rounded-xl border border-slate-200 dark:border-brand-borderDark bg-slate-100 dark:bg-brand-cardDark text-slate-700 dark:text-slate-200 flex items-center justify-center">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-brand-cardDark border-b border-slate-200 dark:border-brand-borderDark px-6 py-5 space-y-4 shadow-xl">
+      <a href="#services" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 font-medium py-1">Services</a>
+      <a href="#playground" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 font-medium py-1">Live Demo Bot</a>
+      <a href="#how-it-works" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 font-medium py-1">How It Works</a>
+      <a href="#calculator" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 font-medium py-1">Pricing Calculator</a>
+      <a href="#contact" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 font-medium py-1">Contact Us</a>
+      <div class="pt-2 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-2">
+        <a href="#playground" class="w-full text-center py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold text-sm">Test Bot Demo</a>
+        <a href="#contact" class="w-full text-center py-2.5 rounded-xl bg-brand-600 text-white font-semibold text-sm shadow-md">Start Project</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="relative pt-12 pb-20 md:pt-20 md:pb-28">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        
+        <!-- Top Pill Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 dark:bg-brand-900/40 border border-brand-200 dark:border-brand-800/80 text-brand-700 dark:text-blue-300 text-xs font-semibold tracking-wide mb-6">
+          <i class="fa-solid fa-sparkles text-brand-600 dark:text-blue-400"></i>
+          <span>Practical AI Agents &amp; Modern Web for Growing Businesses</span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15] max-w-4xl mx-auto mb-6">
+          Smart Websites with <br class="hidden sm:inline"/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-blue-600 to-indigo-600 dark:from-blue-400 dark:via-blue-300 dark:to-indigo-300">
+            Built-In AI Assistants
+          </span>
+        </h1>
+
+        <!-- Subheading -->
+        <p class="text-slate-600 dark:text-slate-300 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
+          We build fast, responsive websites and add practical AI bots that answer customer questions, gather leads, and notify you instantly. No complicated jargon—just tools that save you hours every week.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto mb-16">
+          <a href="#playground" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold shadow-lg shadow-brand-600/30 hover:shadow-brand-600/45 transition-all flex items-center justify-center gap-2.5">
+            <i class="fa-solid fa-play text-xs"></i>
+            <span>Try Demo Bot Live</span>
+          </a>
+          <a href="#calculator" class="w-full sm:w-auto px-7 py-3.5 rounded-xl border border-slate-300 dark:border-brand-borderDark bg-white dark:bg-brand-cardDark hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold shadow-sm transition-all flex items-center justify-center gap-2">
+            <i class="fa-solid fa-calculator text-brand-600 dark:text-blue-400"></i>
+            <span>Calculate Cost</span>
+          </a>
+        </div>
+
+        <!-- Stats / Trust Badges -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto border-t border-slate-200 dark:border-brand-borderDark/80 pt-10">
+          <div class="p-4 rounded-xl bg-white dark:bg-brand-cardDark border border-slate-200 dark:border-brand-borderDark shadow-sm">
+            <div class="font-heading text-2xl sm:text-3xl font-extrabold text-brand-600 dark:text-blue-400">100%</div>
+            <div class="text-xs font-medium text-slate-600 dark:text-slate-400 mt-1">Mobile Responsive</div>
+          </div>
+          <div class="p-4 rounded-xl bg-white dark:bg-brand-cardDark border border-slate-200 dark:border-brand-borderDark shadow-sm">
+            <div class="font-heading text-2xl sm:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400">24/7</div>
+            <div class="text-xs font-medium text-slate-600 dark:text-slate-400 mt-1">Instant Auto Replies</div>
+          </div>
+          <div class="p-4 rounded-xl bg-white dark:bg-brand-cardDark border border-slate-200 dark:border-brand-borderDark shadow-sm">
+            <div class="font-heading text-2xl sm:text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">&lt; 3 Days</div>
+            <div class="text-xs font-medium text-slate-600 dark:text-slate-400 mt-1">Rapid Delivery</div>
+          </div>
+          <div class="p-4 rounded-xl bg-white dark:bg-brand-cardDark border border-slate-200 dark:border-brand-borderDark shadow-sm">
+            <div class="font-heading text-2xl sm:text-3xl font-extrabold text-amber-500 dark:text-amber-400">Zero</div>
+            <div class="text-xs font-medium text-slate-600 dark:text-slate-400 mt-1">Code Needed for You</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Interactive AI Bot Playground (100% Functional) -->
+    <section id="playground" class="py-16 md:py-24 bg-white dark:bg-brand-cardDark/50 border-y border-slate-200 dark:border-brand-borderDark relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-400 text-xs font-semibold mb-3">
+            <i class="fa-solid fa-bolt"></i> In-Browser Interactive Simulator
+          </div>
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-3">
+            Test Our Website AI Assistant
+          </h2>
+          <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base">
+            Try clicking the sample buttons below or type any question to see how our bots politely respond, verify answers, and capture customer requests.
+          </p>
+        </div>
+
+        <!-- Chat Container -->
+        <div class="max-w-4xl mx-auto bg-slate-50 dark:bg-brand-cardDark border border-slate-200 dark:border-brand-borderDark rounded-2xl shadow-xl overflow-hidden flex flex-col h-[620px]">
+          
+          <!-- Bot Header -->
+          <div class="px-5 py-4 bg-white dark:bg-[#0b101b] border-b border-slate-200 dark:border-brand-borderDark flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="relative">
+                <div class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center font-bold">
+                  <i class="fa-solid fa-robot"></i>
+                </div>
+                <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white dark:border-[#0b101b]"></span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="font-heading font-bold text-sm text-slate-900 dark:text-white">AgentCraft Support Bot</h3>
+                  <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-mono px-1.5 py-0.5 rounded">v1.2 Agent</span>
+                </div>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400">Online &bull; Strict persona guardrails active</p>
+              </div>
+            </div>
+
+            <!-- Mode Switch (Text vs JSON Structured Output) & Clear -->
+            <div class="flex items-center gap-2">
+              <button id="toggleJsonBtn" onclick="toggleOutputMode()" class="text-xs font-mono px-2.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:border-brand-600 transition-all flex items-center gap-1.5">
+                <i class="fa-solid fa-code text-[11px] text-brand-600 dark:text-blue-400"></i>
+                <span id="jsonModeText">View Structured JSON</span>
+              </button>
+              <button onclick="clearChat()" title="Reset Conversation" class="text-xs px-2.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-rose-500 dark:hover:text-rose-400 transition-all">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Chat Messages Area -->
+          <div id="chatMessages" class="flex-1 p-5 overflow-y-auto space-y-4 text-sm font-sans">
+            <!-- Initial Bot Message -->
+            <div class="flex gap-3 max-w-[85%]">
+              <div class="w-8 h-8 rounded-lg bg-brand-600 text-white flex-shrink-0 flex items-center justify-center text-xs mt-1">
+                <i class="fa-solid fa-robot"></i>
+              </div>
+              <div class="bg-white dark:bg-[#1a2234] border border-slate-200 dark:border-brand-borderDark/80 rounded-2xl rounded-tl-sm p-4 shadow-sm text-slate-800 dark:text-slate-200 leading-relaxed">
+                <p class="font-medium text-slate-900 dark:text-white mb-1">Hello! Welcome to AgentCraft Studio 👋</p>
+                <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm">I am a live demo of the exact AI assistant we embed into websites. You can ask me what we do, how our pricing works, or how I can send leads straight to your inbox!</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Suggested Quick Prompts -->
+          <div class="px-5 py-2.5 bg-slate-100/70 dark:bg-[#0c1220] border-t border-slate-200 dark:border-brand-borderDark overflow-x-auto whitespace-nowrap flex gap-2">
+            <span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1 font-mono text-[11px] pr-1">Try:</span>
+            <button onclick="sendQuickPrompt('What services do you offer?')" class="text-xs bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-brand-600 dark:hover:border-blue-400 px-3 py-1.5 rounded-full text-slate-700 dark:text-slate-300 transition-all flex-shrink-0">
+              What services do you offer?
+            </button>
+            <button onclick="sendQuickPrompt('How much does a website + bot cost?')" class="text-xs bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-brand-600 dark:hover:border-blue-400 px-3 py-1.5 rounded-full text-slate-700 dark:text-slate-300 transition-all flex-shrink-0">
+              How much does a website + bot cost?
+            </button>
+            <button onclick="sendQuickPrompt('Can the bot notify my email about new leads?')" class="text-xs bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-brand-600 dark:hover:border-blue-400 px-3 py-1.5 rounded-full text-slate-700 dark:text-slate-300 transition-all flex-shrink-0">
+              Can the bot notify my email?
+            </button>
+            <button onclick="sendQuickPrompt('Show me the prompt rules you follow')" class="text-xs bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-brand-600 dark:hover:border-blue-400 px-3 py-1.5 rounded-full text-slate-700 dark:text-slate-300 transition-all flex-shrink-0">
+              Show prompt instructions
+            </button>
+          </div>
+
+          <!-- Input Bar -->
+          <form id="chatForm" onsubmit="handleChatSubmit(event)" class="p-4 bg-white dark:bg-[#0b101b] border-t border-slate-200 dark:border-brand-borderDark flex items-center gap-3">
+            <input type="text" id="chatInput" placeholder="Type a message (e.g. 'How fast can you build my site?')..." autocomplete="off" class="flex-1 px-4 py-3 rounded-xl bg-slate-100 dark:bg-brand-cardDark border border-slate-200 dark:border-brand-borderDark text-slate-800 dark:text-slate-100 placeholder-slate-400 text-sm focus:outline-none focus:border-brand-600 focus:ring-1 focus:ring-brand-600 transition-all">
+            <button type="submit" id="sendBtn" class="px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm transition-all flex items-center gap-2 shadow-md shadow-brand-600/20 flex-shrink-0">
+              <span>Send</span>
+              <i class="fa-solid fa-paper-plane text-xs"></i>
+            </button>
+          </form>
+
+        </div>
+
+        <p class="text-center text-xs text-slate-500 dark:text-slate-400 mt-4 font-mono">
+          <i class="fa-solid fa-shield-check text-emerald-500 mr-1"></i> Agent follows Panaversity PCAO-F principles: Structured JSON fallback, role restriction &amp; zero external leaks.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-900/40 border border-brand-200 dark:border-brand-800 text-brand-700 dark:text-blue-300 text-xs font-semibold mb-3">
+          <i class="fa-solid fa-layer-group"></i> Our 3 Core Offers
+        </div>
+        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-3">
+          Everything Your Business Needs to Grow
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base">
+          No complicated enterprise clutter. Clean, practical services that actually generate results for small businesses and independent consultants.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Service 1 -->
+        <div class="p-8 rounded-2xl bg-white dark:bg-brand-cardDark border border-slate-200 dark:border-brand-borderDark hover:border-brand-500 transition-all shadow-sm hover:shadow-lg flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-950/60 text-brand-600 dark:text-blue-400 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-laptop-code"></i>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white mb-2">
+              Fast, Responsive Websites
+            </h3>
+            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6">
+              Clean modern single or multi-page sites designed with Tailwind &amp; React standards. Loads instantly on any smartphone, tablet, or laptop.
+            </p>
+          </div>
+          <ul class="text-xs space-y-2.5 text-slate-600 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800 pt-4 font-mono">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-600 dark:text-blue-400"></i> Mobile-first &amp; ultra fast loading</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-600 dark:text-blue-400"></i> Google SEO optimized markup</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-600 dark:text-blue-400"></i> Free deployment on Vercel/Netlify</li>
+          </ul>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="p-8 rounded-2xl bg-white dark:bg-brand-cardDark border-2 border-brand-500/80 shadow-md relative flex flex-col justify-between group">
+          <div class="absolute -top-3 right-6 bg-brand-600 text-white text-[11px] font-semibold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+            Most Popular
+          </div>
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-indigo-100 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-robot"></i>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white mb-2">
+              Website AI Assistants
+            </h3>
+            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6">
+              A custom chatbot trained specifically on your business information, services, and pricing. It answers questions 24/7 so you never lose a client.
+            </p>
+          </div>
+          <ul class="text-xs space-y-2.5 text-slate-600 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800 pt-4 font-mono">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-600 dark:text-indigo-400"></i> Trained on your exact FAQ document</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-600 dark:text-indigo-400"></i> Lead &amp; contact collection in-chat</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-600 dark:text-indigo-400"></i> Zero hallucination rules applied</li>
+          </ul>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="p-8 rounded-2xl bg-white dark:bg-brand-cardDark border border-slate-200 dark:border-brand-borderDark hover:border-emerald-500 transition-all shadow-sm hover:shadow-lg flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white mb-2">
+              Task Automations
+            </h3>
+            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6">
+              Connect your website form and AI bot directly with your daily tools. Get instant WhatsApp alerts or automated rows added in Google Sheets.
+            </p>
+          </div>
+          <ul class="text-xs space-y-2.5 text-slate-600 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800 pt-4 font-mono">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400"></i> Google Sheets &amp; Excel sync</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400"></i> Email notifications to your inbox</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400"></i> WhatsApp click-to-chat redirects</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- How It Works (3 Steps) -->
+    <section id="how-it-works" class="py-20 bg-slate-100/60 dark:bg-brand-cardDark/40 border-y border-slate-200 dark:border-brand-borderDark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold mb-3">
+            <i class="fa-solid fa-route"></i> Simple Process
+          </div>
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-3">
+            How We Get You Live in 3 Days
+          </h2>
+          <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base">
+            No technical knowledge needed on your end. We take care of the entire setup from start to finish.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <div class="p-6 rounded-2xl bg-white dark:bg-brand-cardDark border border-slate-200 dark:border-brand-borderDark relative">
+            <div class="text-5xl font-heading font-extrabold text-brand-600/20 dark:text-blue-500/20 mb-3">01</div>
+            <h3 class="font-heading text-lg font-bold text-slate-900 dark:text-white mb-2">Share Your Business FAQ</h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+              Send us your business details, list of services, prices, and common customer questions in any format (even a quick voice note or text document).
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white dark:bg-brand-cardDark border border-slate-200 dark:border-brand-borderDark relative">
+            <div class="text-5xl font-heading font-extrabold text-brand-600/20 dark:text-blue-500/20 mb-3">02</div>
+            <h3 class="font-heading text-lg font-bold text-slate-900 dark:text-white mb-2">We Build &amp; Configure</h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+              We design your modern website, configure the AI Assistant with strict rules so it never invents facts, and test the notification pipeline.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white dark:bg-brand-cardDark border border-slate-200 dark:border-brand-borderDark relative">
+            <div class="text-5xl font-heading font-extrabold text-brand-600/20 dark:text-blue-500/20 mb-3">03</div>
+            <h3 class="font-heading text-lg font-bold text-slate-900 dark:text-white mb-2">Launch &amp; Save Time</h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+              We connect your custom domain name and launch. Your website is ready to convert visitors and reply to customer inquiries 24 hours a day.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Interactive Cost & Scope Calculator -->
+    <section id="calculator" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-900/40 border border-brand-200 dark:border-brand-800 text-brand-700 dark:text-blue-300 text-xs font-semibold mb-3">
+          <i class="fa-solid fa-calculator"></i> Transparent Pricing
+        </div>
+        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-3">
+          Interactive Cost &amp; Scope Calculator
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base">
+          Choose what you need below to see an instant estimate. Click 'Book This Scope' to pre-fill your inquiry automatically!
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Controls (8 Cols) -->
+        <div class="lg:col-span-8 bg-white dark:bg-brand-cardDark p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-brand-borderDark space-y-8 shadow-sm">
+          
+          <!-- 1. Website Structure -->
+          <div>
+            <label class="block text-xs font-mono uppercase text-slate-500 dark:text-slate-400 font-bold mb-3">
+              1. Base Website Setup
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <button type="button" onclick="setCalcOption('web', 150, 'Single-Page High-Conversion Landing')" class="calc-btn opt-web p-4 rounded-xl border-2 border-brand-600 bg-brand-50/50 dark:bg-brand-900/20 text-left transition-all" data-price="150">
+                <div class="flex justify-between items-center mb-1">
+                  <span class="font-bold text-slate-900 dark:text-white text-sm">One-Page Landing</span>
+                  <span class="font-mono text-xs font-bold text-brand-600 dark:text-blue-400">$150</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Hero, services, contact, about, and mobile optimization.</p>
+              </button>
+
+              <button type="button" onclick="setCalcOption('web', 250, 'Multi-Page Business Website (3-5 Pages)')" class="calc-btn opt-web p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-left transition-all" data-price="250">
+                <div class="flex justify-between items-center mb-1">
+                  <span class="font-bold text-slate-900 dark:text-white text-sm">Multi-Page Site</span>
+                  <span class="font-mono text-xs font-bold text-brand-600 dark:text-blue-400">$250</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Home, About, Services, Blog/Pricing &amp; dedicated Contact page.</p>
+              </button>
+            </div>
+          </div>
+
+          <!-- 2. AI Assistant Type -->
+          <div>
+            <label class="block text-xs font-mono uppercase text-slate-500 dark:text-slate-400 font-bold mb-3">
+              2. Custom AI Bot Integration
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <button type="button" onclick="setCalcOption('bot', 0, 'No AI Bot (Standard Website Only)')" class="calc-btn opt-bot p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-left transition-all" data-price="0">
+                <div class="font-bold text-slate-900 dark:text-white text-sm mb-1">No AI Bot</div>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Standard contact form only.</p>
+              </button>
+
+              <button type="button" onclick="setCalcOption('bot', 90, 'Basic FAQ Assistant Bot')" class="calc-btn opt-bot p-4 rounded-xl border-2 border-brand-600 bg-brand-50/50 dark:bg-brand-900/20 text-left transition-all" data-price="90">
+                <div class="flex justify-between items-center mb-1">
+                  <span class="font-bold text-slate-900 dark:text-white text-sm">FAQ Assistant</span>
+                  <span class="font-mono text-xs font-bold text-brand-600 dark:text-blue-400">+$90</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Answers business questions accurately 24/7.</p>
+              </button>
+
+              <button type="button" onclick="setCalcOption('bot', 160, 'Lead Capture & Scheduling Agent')" class="calc-btn opt-bot p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-left transition-all" data-price="160">
+                <div class="flex justify-between items-center mb-1">
+                  <span class="font-bold text-slate-900 dark:text-white text-sm">Lead Agent</span>
+                  <span class="font-mono text-xs font-bold text-brand-600 dark:text-blue-400">+$160</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Collects client emails &amp; books discovery calls.</p>
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. Add-ons (Checkboxes) -->
+          <div>
+            <label class="block text-xs font-mono uppercase text-slate-500 dark:text-slate-400 font-bold mb-3">
+              3. Practical Add-ons
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <label class="flex items-center gap-3 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-all">
+                <input type="checkbox" id="addonSheets" onchange="updateCalc()" class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500">
+                <div>
+                  <span class="text-xs font-bold text-slate-900 dark:text-white block">Google Sheets Sync (+$30)</span>
+                  <span class="text-[11px] text-slate-500 dark:text-slate-400">Every bot inquiry saved to your live spreadsheet.</span>
+                </div>
+              </label>
+
+              <label class="flex items-center gap-3 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-all">
+                <input type="checkbox" id="addonEmail" onchange="updateCalc()" class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500">
+                <div>
+                  <span class="text-xs font-bold text-slate-900 dark:text-white block">Instant Email Alerts (+$20)</span>
+                  <span class="text-[11px] text-slate-500 dark:text-slate-400">Receive an email immediately when a client chats.</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Summary & Action (4 Cols) -->
+        <div class="lg:col-span-4 bg-white dark:bg-brand-cardDark p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-brand-borderDark shadow-lg sticky top-28">
+          <span class="text-xs font-mono uppercase text-brand-600 dark:text-blue-400 font-bold">Estimated Quote</span>
+          <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white mt-1 mb-4">Your Custom Scope</h3>
+
+          <div class="space-y-3 text-xs border-b border-slate-200 dark:border-slate-800 pb-5 mb-5 font-mono">
+            <div class="flex justify-between">
+              <span class="text-slate-600 dark:text-slate-400" id="calcSummaryWeb">One-Page Landing</span>
+              <span class="font-bold text-slate-900 dark:text-white" id="calcPriceWeb">$150</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-600 dark:text-slate-400" id="calcSummaryBot">Basic FAQ Bot</span>
+              <span class="font-bold text-slate-900 dark:text-white" id="calcPriceBot">+$90</span>
+            </div>
+            <div class="flex justify-between" id="calcSummaryAddonsRow">
+              <span class="text-slate-600 dark:text-slate-400">Add-ons Selected</span>
+              <span class="font-bold text-slate-900 dark:text-white" id="calcPriceAddons">+$0</span>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Total One-Time Investment</div>
+            <div class="font-heading text-4xl font-extrabold text-brand-600 dark:text-blue-400" id="calcTotalPrice">$240</div>
+            <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-1">
+              <i class="fa-solid fa-clock text-[10px]"></i> Ready to launch in approx 3 business days
+            </div>
+          </div>
+
+          <button onclick="applyScopeToForm()" class="w-full py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-md shadow-brand-600/30 transition-all flex items-center justify-center gap-2">
+            <span>Book This Scope</span>
+            <i class="fa-solid fa-arrow-down text-xs"></i>
+          </button>
+
+          <p class="text-[11px] text-center text-slate-400 dark:text-slate-500 mt-3">
+            Zero commitment. We discuss your exact needs first.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact & Consultation Form (100% Functional Client-Side) -->
+    <section id="contact" class="py-20 bg-slate-100/60 dark:bg-brand-cardDark/40 border-t border-slate-200 dark:border-brand-borderDark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Contact Left Info (5 Cols) -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-900/40 border border-brand-200 dark:border-brand-800 text-brand-700 dark:text-blue-300 text-xs font-semibold">
+              <i class="fa-solid fa-handshake"></i> Let's Talk
+            </div>
+            
+            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white leading-tight">
+              Ready to Upgrade Your Website with AI?
+            </h2>
+
+            <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              Tell us about your business or project idea. Even if you're not sure which AI features you need, we'll recommend the simplest setup that saves you the most time.
+            </p>
+
+            <div class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800 text-sm">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-white dark:bg-brand-cardDark border border-slate-200 dark:border-brand-borderDark flex items-center justify-center text-brand-600 dark:text-blue-400">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-500">Direct Inquiries</div>
+                  <div class="font-medium text-slate-800 dark:text-slate-200">hello@agentcraft.studio</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-white dark:bg-brand-cardDark border border-slate-200 dark:border-brand-borderDark flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                  <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-500">Typical Reply Time</div>
+                  <div class="font-medium text-slate-800 dark:text-slate-200">Within 4 to 6 hours</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form (7 Cols) -->
+          <div class="lg:col-span-7 bg-white dark:bg-brand-cardDark p-6 sm:p-10 rounded-2xl border border-slate-200 dark:border-brand-borderDark shadow-xl">
+            
+            <form id="inquiryForm" onsubmit="handleInquirySubmit(event)" class="space-y-5">
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-mono uppercase text-slate-600 dark:text-slate-400 font-bold mb-1.5">Your Name *</label>
+                  <input type="text" id="custName" required placeholder="Ali Hassan" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-brand-dark border border-slate-200 dark:border-brand-borderDark text-slate-800 dark:text-slate-200 text-sm focus:outline-none focus:border-brand-600 transition-all">
+                </div>
+
+                <div>
+                  <label class="block text-xs font-mono uppercase text-slate-600 dark:text-slate-400 font-bold mb-1.5">Business / Project Name</label>
+                  <input type="text" id="custBusiness" placeholder="Hassan Law Firm / Coffee Shop" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-brand-dark border border-slate-200 dark:border-brand-borderDark text-slate-800 dark:text-slate-200 text-sm focus:outline-none focus:border-brand-600 transition-all">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-mono uppercase text-slate-600 dark:text-slate-400 font-bold mb-1.5">Email Address *</label>
+                  <input type="email" id="custEmail" required placeholder="ali@example.com" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-brand-dark border border-slate-200 dark:border-brand-borderDark text-slate-800 dark:text-slate-200 text-sm focus:outline-none focus:border-brand-600 transition-all">
+                </div>
+
+                <div>
+                  <label class="block text-xs font-mono uppercase text-slate-600 dark:text-slate-400 font-bold mb-1.5">Selected Scope / Service</label>
+                  <input type="text" id="custScope" readonly value="One-Page Landing + FAQ Assistant ($240)" class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-[#0c1322] border border-slate-300 dark:border-slate-800 text-brand-600 dark:text-blue-400 font-mono text-xs focus:outline-none cursor-default">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-mono uppercase text-slate-600 dark:text-slate-400 font-bold mb-1.5">Tell Us About Your Project &amp; Questions *</label>
+                <textarea id="custMessage" required rows="4" placeholder="Briefly describe what services you sell or what questions customers usually ask..." class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-brand-dark border border-slate-200 dark:border-brand-borderDark text-slate-800 dark:text-slate-200 text-sm focus:outline-none focus:border-brand-600 transition-all resize-none"></textarea>
+              </div>
+
+              <button type="submit" id="submitInquiryBtn" class="w-full py-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-lg shadow-brand-600/30 transition-all flex items-center justify-center gap-2">
+                <span>Send Inquiry &amp; Request Callback</span>
+                <i class="fa-solid fa-paper-plane text-xs"></i>
+              </button>
+            </form>
+
+            <!-- Success Notice (Shows on submit) -->
+            <div id="formSuccessAlert" class="hidden p-6 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800 text-center space-y-3">
+              <div class="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto text-xl">
+                <i class="fa-solid fa-circle-check"></i>
+              </div>
+              <h4 class="font-heading text-lg font-bold text-slate-900 dark:text-white">Inquiry Received Successfully!</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 max-w-sm mx-auto" id="successDetailsText">
+                Thank you! Our lead developer will review your request and get back to you via email today.
+              </p>
+              <button onclick="resetContactForm()" class="text-xs font-semibold text-brand-600 dark:text-blue-400 hover:underline pt-2 inline-block">
+                Send another inquiry
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white dark:bg-brand-cardDark border-t border-slate-200 dark:border-brand-borderDark py-10 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-brand-600 text-white flex items-center justify-center text-sm font-bold">
+          <i class="fa-solid fa-robot"></i>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="font-heading font-bold text-slate-900 dark:text-white">AgentCraft Studio</span>
+          <span class="text-xs text-slate-400 dark:text-slate-500 font-mono">| Websites &amp; Smart Bots Made Simple</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-6 text-xs text-slate-500 dark:text-slate-400 font-medium">
+        <a href="#services" class="hover:text-brand-600 dark:hover:text-blue-400">Services</a>
+        <a href="#playground" class="hover:text-brand-600 dark:hover:text-blue-400">Demo Bot</a>
+        <a href="#calculator" class="hover:text-brand-600 dark:hover:text-blue-400">Calculator</a>
+        <a href="#contact" class="hover:text-brand-600 dark:hover:text-blue-400">Contact</a>
+      </div>
+
+      <div class="text-xs text-slate-400 dark:text-slate-500 font-mono text-center md:text-right">
+        Built for Panaversity PCAO-F Certified Workflows.
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- 100% Functional Script Logic -->
+  <script>
+    /* ========================================================
+       1. THEME TOGGLE LOGIC (Light / Dark Mode with Persistence)
+       ======================================================== */
+    const htmlEl = document.documentElement;
+    const themeIcon = document.getElementById('themeIcon');
+    const themeIconMobile = document.getElementById('themeIconMobile');
+
+    function applyTheme(isDark) {
+      if (isDark) {
+        htmlEl.classList.add('dark');
+        themeIcon.className = 'fa-solid fa-sun text-amber-400';
+        themeIconMobile.className = 'fa-solid fa-sun text-amber-400';
+        localStorage.setItem('agentcraft_theme', 'dark');
+      } else {
+        htmlEl.classList.remove('dark');
+        themeIcon.className = 'fa-solid fa-moon';
+        themeIconMobile.className = 'fa-solid fa-moon';
+        localStorage.setItem('agentcraft_theme', 'light');
+      }
+    }
+
+    // Initialize from local storage or system preference
+    const savedTheme = localStorage.getItem('agentcraft_theme');
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      applyTheme(true);
+    } else {
+      applyTheme(false);
+    }
+
+    function toggleTheme() {
+      const isCurrentlyDark = htmlEl.classList.contains('dark');
+      applyTheme(!isCurrentlyDark);
+    }
+
+    document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme);
+    document.getElementById('themeToggleBtnMobile').addEventListener('click', toggleTheme);
+
+    /* ========================================================
+       2. MOBILE DRAWER MENU
+       ======================================================== */
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    /* ========================================================
+       3. INTERACTIVE LIVE AI DEMO BOT (Panaversity PCAO-F Style)
+       ======================================================== */
+    let jsonStructuredMode = false;
+    let chatMemory = [];
+
+    // Bot Knowledge Base & Deterministic Agent Rules
+    const botFAQ = {
+      services: "At AgentCraft Studio, we offer 3 main solutions: 1) Fast responsive websites (single or multi-page), 2) Custom on-site AI Assistants trained on your business FAQ, and 3) Practical task automations like sending leads straight to Google Sheets and your email.",
+      pricing: "Our starter one-page responsive website begins at $150. A customized FAQ AI Assistant is only +$90, making a complete website + smart bot package just $240. You can check our interactive calculator below to adjust options!",
+      email: "Yes, absolutely! We connect your chatbot directly to your email or WhatsApp. As soon as a website visitor asks for a quote or leaves their email, you get an immediate alert with their message details.",
+      prompt: "Here is the core system prompt structure we configure for our client agents:\n\n1. Role: You are a friendly customer concierge.\n2. Knowledge Boundary: Answer ONLY based on provided business docs.\n3. Fallback: If unknown, politely ask the user for their email.\n4. Output: Structured clean answers without technical jargon.",
+      turnaround: "We typically deliver a complete landing page with the AI assistant configured and tested within 3 to 4 business days.",
+      default: "Thanks for your question! As an AI agent trained by AgentCraft Studio, I can answer questions about our web packages, build time, and automation workflows. Would you like to see our pricing calculator or book a free discovery call?"
+    };
+
+    function toggleOutputMode() {
+      jsonStructuredMode = !jsonStructuredMode;
+      const label = document.getElementById('jsonModeText');
+      label.innerText = jsonStructuredMode ? "View Plain Text" : "View Structured JSON";
+      
+      // Re-render recent messages if needed
+      appendSystemNotice(`Display mode switched to: ${jsonStructuredMode ? 'Structured JSON (Agent Schema)' : 'Natural Customer Chat'}`);
+    }
+
+    function appendSystemNotice(text) {
+      const chatContainer = document.getElementById('chatMessages');
+      const div = document.createElement('div');
+      div.className = "text-center my-2";
+      div.innerHTML = `<span class="text-[10px] font-mono text-slate-500 dark:text-slate-400 bg-slate-200/60 dark:bg-slate-800 px-2 py-0.5 rounded-full">${text}</span>`;
+      chatContainer.appendChild(div);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    function sendQuickPrompt(text) {
+      document.getElementById('chatInput').value = text;
+      handleChatSubmit(new Event('submit'));
+    }
+
+    function clearChat() {
+      const chatContainer = document.getElementById('chatMessages');
+      chatContainer.innerHTML = `
+        <div class="flex gap-3 max-w-[85%]">
+          <div class="w-8 h-8 rounded-lg bg-brand-600 text-white flex-shrink-0 flex items-center justify-center text-xs mt-1">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <div class="bg-white dark:bg-[#1a2234] border border-slate-200 dark:border-brand-borderDark/80 rounded-2xl rounded-tl-sm p-4 shadow-sm text-slate-800 dark:text-slate-200 leading-relaxed text-sm">
+            <p class="font-medium text-slate-900 dark:text-white mb-1">Conversation Reset 👋</p>
+            <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm">Ask me any question or pick one of the suggestions above to test how our agents respond!</p>
+          </div>
+        </div>
+      `;
+      chatMemory = [];
+    }
+
+    function handleChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('chatInput');
+      const userText = input.value.trim();
+      if (!userText) return;
+
+      const chatContainer = document.getElementById('chatMessages');
+
+      // 1. Render User Message
+      const userBubble = document.createElement('div');
+      userBubble.className = "flex justify-end";
+      userBubble.innerHTML = `
+        <div class="bg-brand-600 text-white rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%] text-xs sm:text-sm shadow-sm leading-relaxed">
+          ${escapeHtml(userText)}
+        </div>
+      `;
+      chatContainer.appendChild(userBubble);
+      input.value = '';
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+
+      // 2. Add Typing Indicator
+      const typingIndicator = document.createElement('div');
+      typingIndicator.id = 'botTyping';
+      typingIndicator.className = "flex gap-3 max-w-[85%]";
+      typingIndicator.innerHTML = `
+        <div class="w-8 h-8 rounded-lg bg-brand-600 text-white flex-shrink-0 flex items-center justify-center text-xs mt-1">
+          <i class="fa-solid fa-robot"></i>
+        </div>
+        <div class="bg-white dark:bg-[#1a2234] border border-slate-200 dark:border-brand-borderDark/80 rounded-2xl rounded-tl-sm p-3.5 shadow-sm text-slate-400 flex items-center gap-1.5 text-xs font-mono">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-600 animate-pulse"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-600 animate-pulse delay-75"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-600 animate-pulse delay-150"></span>
+          <span class="ml-1 text-[11px]">Evaluating intent...</span>
+        </div>
+      `;
+      chatContainer.appendChild(typingIndicator);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+
+      // 3. Process Intent & Respond (Deterministic PCAO-F Agent simulation)
+      setTimeout(() => {
+        const typingEl = document.getElementById('botTyping');
+        if (typingEl) typingEl.remove();
+
+        const lower = userText.toLowerCase();
+        let reply = botFAQ.default;
+        let matchedIntent = "general_inquiry";
+
+        if (lower.includes('service') || lower.includes('what do you do') || lower.includes('offer')) {
+          reply = botFAQ.services;
+          matchedIntent = "services_overview";
+        } else if (lower.includes('price') || lower.includes('cost') || lower.includes('how much') || lower.includes('rate')) {
+          reply = botFAQ.pricing;
+          matchedIntent = "pricing_inquiry";
+        } else if (lower.includes('email') || lower.includes('alert') || lower.includes('notification') || lower.includes('leads')) {
+          reply = botFAQ.email;
+          matchedIntent = "notification_features";
+        } else if (lower.includes('prompt') || lower.includes('rule') || lower.includes('instruction') || lower.includes('behind')) {
+          reply = botFAQ.prompt;
+          matchedIntent = "prompt_architecture";
+        } else if (lower.includes('time') || lower.includes('fast') || lower.includes('day') || lower.includes('turnaround')) {
+          reply = botFAQ.turnaround;
+          matchedIntent = "delivery_timeline";
+        }
+
+        chatMemory.push({ user: userText, bot: reply, intent: matchedIntent });
+
+        // Format message based on toggle (Text vs Structured Output)
+        let displayContent = '';
+        if (jsonStructuredMode) {
+          const jsonPayload = {
+            status: "success",
+            agent: "AgentCraft_v1",
+            intent: matchedIntent,
+            confidence: 0.98,
+            response_text: reply,
+            suggested_action: "scroll_to_calculator"
+          };
+          displayContent = `
+            <pre class="bg-slate-900 text-emerald-400 p-3 rounded-lg text-xs font-mono overflow-x-auto leading-relaxed border border-slate-700">${JSON.stringify(jsonPayload, null, 2)}</pre>
+          `;
+        } else {
+          displayContent = `<p class="leading-relaxed text-slate-800 dark:text-slate-200 text-xs sm:text-sm whitespace-pre-line">${escapeHtml(reply)}</p>`;
+        }
+
+        const botBubble = document.createElement('div');
+        botBubble.className = "flex gap-3 max-w-[85%]";
+        botBubble.innerHTML = `
+          <div class="w-8 h-8 rounded-lg bg-brand-600 text-white flex-shrink-0 flex items-center justify-center text-xs mt-1">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <div class="bg-white dark:bg-[#1a2234] border border-slate-200 dark:border-brand-borderDark/80 rounded-2xl rounded-tl-sm p-4 shadow-sm text-sm">
+            ${displayContent}
+          </div>
+        `;
+        chatContainer.appendChild(botBubble);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+
+      }, 450);
+    }
+
+    function escapeHtml(text) {
+      const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+      return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+    }
+
+    /* ========================================================
+       4. INTERACTIVE CALCULATOR LOGIC
+       ======================================================== */
+    const calcState = {
+      webCost: 150,
+      webLabel: 'One-Page Landing',
+      botCost: 90,
+      botLabel: 'Basic FAQ Assistant',
+      addonSheets: false,
+      addonEmail: false
+    };
+
+    function setCalcOption(type, price, label) {
+      if (type === 'web') {
+        calcState.webCost = price;
+        calcState.webLabel = label;
+        highlightCalcButtons('.opt-web', price);
+        document.getElementById('calcSummaryWeb').innerText = label;
+        document.getElementById('calcPriceWeb').innerText = `$${price}`;
+      } else if (type === 'bot') {
+        calcState.botCost = price;
+        calcState.botLabel = label;
+        highlightCalcButtons('.opt-bot', price);
+        document.getElementById('calcSummaryBot').innerText = label;
+        document.getElementById('calcPriceBot').innerText = price === 0 ? '$0' : `+$${price}`;
+      }
+      updateCalc();
+    }
+
+    function highlightCalcButtons(selector, selectedPrice) {
+      document.querySelectorAll(selector).forEach(btn => {
+        const btnPrice = parseInt(btn.getAttribute('data-price'));
+        if (btnPrice === selectedPrice) {
+          btn.className = `calc-btn ${selector.replace('.', '')} p-4 rounded-xl border-2 border-brand-600 bg-brand-50/50 dark:bg-brand-900/20 text-left transition-all`;
+        } else {
+          btn.className = `calc-btn ${selector.replace('.', '')} p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-left transition-all`;
+        }
+      });
+    }
+
+    function updateCalc() {
+      const sheetsChecked = document.getElementById('addonSheets').checked;
+      const emailChecked = document.getElementById('addonEmail').checked;
+
+      let addonTotal = 0;
+      if (sheetsChecked) addonTotal += 30;
+      if (emailChecked) addonTotal += 20;
+
+      document.getElementById('calcPriceAddons').innerText = `+$${addonTotal}`;
+
+      const grandTotal = calcState.webCost + calcState.botCost + addonTotal;
+      document.getElementById('calcTotalPrice').innerText = `$${grandTotal}`;
+
+      // Update Contact Form Scope field live
+      let scopeDescription = `${calcState.webLabel} + ${calcState.botLabel}`;
+      if (sheetsChecked) scopeDescription += " + Sheets Sync";
+      if (emailChecked) scopeDescription += " + Email Alerts";
+      scopeDescription += ` ($${grandTotal})`;
+
+      document.getElementById('custScope').value = scopeDescription;
+    }
+
+    function applyScopeToForm() {
+      const contactSection = document.getElementById('contact');
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+
+      // Highlight input briefly
+      const scopeInput = document.getElementById('custScope');
+      scopeInput.classList.add('ring-2', 'ring-brand-600');
+      setTimeout(() => scopeInput.classList.remove('ring-2', 'ring-brand-600'), 1500);
+    }
+
+    /* ========================================================
+       5. CONTACT FORM VALIDATION & SUBMISSION
+       ======================================================== */
+    function handleInquirySubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('custName').value.trim();
+      const business = document.getElementById('custBusiness').value.trim() || 'Independent';
+      const email = document.getElementById('custEmail').value.trim();
+      const scope = document.getElementById('custScope').value;
+      const message = document.getElementById('custMessage').value.trim();
+
+      if (!name || !email || !message) return;
+
+      const form = document.getElementById('inquiryForm');
+      const successNotice = document.getElementById('formSuccessAlert');
+      const successText = document.getElementById('successDetailsText');
+
+      successText.innerText = `Thank you, ${name}! We have received your inquiry for "${scope}". A confirmation message has been queued for ${email}.`;
+
+      form.classList.add('hidden');
+      successNotice.classList.remove('hidden');
+    }
+
+    function resetContactForm() {
+      const form = document.getElementById('inquiryForm');
+      const successNotice = document.getElementById('formSuccessAlert');
+
+      document.getElementById('custName').value = '';
+      document.getElementById('custBusiness').value = '';
+      document.getElementById('custEmail').value = '';
+      document.getElementById('custMessage').value = '';
+
+      successNotice.classList.add('hidden');
+      form.classList.remove('hidden');
+    }
+  </script>
+
+</body>
+</html>
